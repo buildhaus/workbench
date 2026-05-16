@@ -40,10 +40,10 @@ Detect pathway context:
 
 Load PM configuration:
 - Read `.workbench/settings.yml` to determine the configured project management tool.
-- The PM tool is `linear` (currently the only supported value).
-- Use the Linear MCP tools available globally: `linear_get_issue`, `linear_save_issue`, `linear_get_document`, `linear_save_document`, `linear_create_issue_label`, and `linear_list_issue_labels`.
-- Follow the status guard protocol when validating `status-ticket` labels.
-- Follow the label preservation protocol when updating status: preserve non-status labels, remove old status labels, append the new canonical status.
+- Load the corresponding PM skill: `skill({ name: '<value>' })`.
+- Use the PM skill's tool mapping table for all issue, document, and label operations.
+- Follow the status guard protocol from the loaded PM skill.
+- Follow the label preservation protocol from the loaded PM skill.
 
 ## Task Context
 
@@ -118,7 +118,7 @@ If the issue is narrow, single-concern, or tightly coupled, skip decomposition a
 
 #### 3.5.2 Decomposition Proposal
 
-Present a structured decomposition proposal before making any writes to Linear. The proposal must include:
+Present a structured decomposition proposal before making any writes to the PM tool. The proposal must include:
 
 1. **Rationale**: Why this issue is too broad — which criteria from 3.5.1 triggered the assessment.
 2. **Named sub-issues**: For each sub-issue, provide:
@@ -134,7 +134,7 @@ Present a structured decomposition proposal before making any writes to Linear. 
    * 2: Edit — request specific amendments (titles, splits, merges, reordering)
    * 3: Reject — fall back to standard single-ticket flow
 
-Do NOT create any Linear issues, documents, or labels at this stage. The proposal is read-only.
+Do NOT create any issues, documents, or labels via the PM tool at this stage. The proposal is read-only.
 
 #### 3.5.3 Proposal Iteration (approve/edit/reject)
 
@@ -146,25 +146,25 @@ Do NOT create any Linear issues, documents, or labels at this stage. The proposa
 
 ##### 3.5.4.1 Prepare labels
 
-1. Check if `decomposed` label exists: `linear_list_issue_labels` with `name: "decomposed"`.
-2. If not found, create it: `linear_create_issue_label({ name: "decomposed" })`. Retry up to 3 times (500ms / 1s / 2s backoff). On failure after all retries, **hard-stop** — `decomposed` is a workflow-integrity label.
-3. Check if `Epic` label exists: `linear_list_issue_labels` with `name: "Epic"`.
-4. If not found, create it: `linear_create_issue_label({ name: "Epic" })`. Retry up to 3 times. On failure, emit a **soft warning** — continue with decomposition (the label can be added manually later).
+1. Check if `decomposed` label exists: use the PM skill's list labels operation with `name: "decomposed"`.
+2. If not found, create it: use the PM skill's create a label operation with `{ name: "decomposed" }`. Retry up to 3 times (500ms / 1s / 2s backoff). On failure after all retries, **hard-stop** — `decomposed` is a workflow-integrity label.
+3. Check if `Epic` label exists: use the PM skill's list labels operation with `name: "Epic"`.
+4. If not found, create it: use the PM skill's create a label operation with `{ name: "Epic" }`. Retry up to 3 times. On failure, emit a **soft warning** — continue with decomposition (the label can be added manually later).
 
 ##### 3.5.4.2 Create sub-issues
 
 For each sub-issue, in dependency order (unblocked first, then sequentially for dependent ones):
 
-Call `linear_save_issue` WITHOUT `id`:
+Use the PM skill's create a sub-issue operation:
 
 ```
-linear_save_issue({
+{
   title: "{sub_issue_title}",
   parentId: "{parent_issue_id}",
   labels: ["{Feature|Improvement}"],
   priority: {inherited_priority},
   team: "{parent_team_key}"
-})
+}
 ```
 
 Rules:
@@ -187,11 +187,11 @@ Before applying `blockedBy` relations, run DFS-based cycle detection:
 2. For each node, run DFS tracking visited nodes in the current path.
 3. If a back-edge is found, a cycle exists — surface an error and **do not apply any relations**.
 
-If no cycle is detected, apply relations using `blockedBy` on the dependent sub-issue only (Linear maintains bidirectionality). Retry failed relation-setting calls up to 3 times; on failure, emit a warning but continue.
+If no cycle is detected, apply relations using `blockedBy` on the dependent sub-issue only (the PM tool maintains bidirectionality). Retry failed relation-setting calls up to 3 times; on failure, emit a warning but continue.
 
 ##### 3.5.4.4 Preserve original PRD
 
-Create a Linear document: `linear_save_document({ issue: "{parent_issue_id}", title: "Original PRD: {ISSUE_ID}", content: "{original_description_content}" })`.
+Create a PM document: use the PM skill's create a document operation with title `Original PRD: {ISSUE_ID}` and the original description content.
 
 ##### 3.5.4.5 Rewrite parent as epic
 
@@ -225,7 +225,7 @@ Overwrite the parent issue description with the epic format:
 {Any additional context, constraints, or decisions relevant to implementers.}
 ```
 
-Call `linear_save_issue({ id: "{parent_issue_id}", description: "{epic_content}" })`.
+Use the PM skill's overwrite issue description operation with the epic content.
 
 ##### 3.5.4.6 Apply labels to parent
 
@@ -315,7 +315,7 @@ Once the Q&A and scope exploration are complete:
 - [ ] [Manual test step]
 ```
 
-2. Overwrite the issue description with the full ticket content using `linear_save_issue`.
+2. Overwrite the issue description with the full ticket content using the PM skill's overwrite issue description operation.
 3. Save a local convenience copy to `thoughts/tickets/{issue_id}_{snake_case_subject}.md` using the Write tool. This file must never be used as an input by downstream commands.
 
 ### Step 6: Validation And Confirmation

@@ -113,19 +113,19 @@ Stop-step validation failed
    - Keep updates concise and actionable.
 
 10. **Emit final summary**
-   - At run end, provide a structured summary including:
-     - `Report Version: v1`
-     - `Report Status: Complete` for full completion, otherwise `Report Status: Partial`
-     - `Final Stop Reason: <reason>` for partial runs
-     - Issue ID
-     - Start status and computed entry step
-     - Steps attempted in order
-     - Outcome per step (`success`/`blocked`/`failed`)
-     - Per-step summary of what happened, questions asked, answers provided, artifacts created, and runtime if known
-     - Workflow outcome: completed or first failure/blocker
-   - Create a new Linear document on every orchestrator run using `linear_save_document` without `id`:
-     - Title: `Implementation Report: <ISSUE_ID> - YYYY-MM-DDTHH-MM-SSZ`
-     - Content: full markdown report generated from this summary
+    - At run end, provide a structured summary including:
+      - `Report Version: v1`
+      - `Report Status: Complete` for full completion, otherwise `Report Status: Partial`
+      - `Final Stop Reason: <reason>` for partial runs
+      - Issue ID
+      - Start status and computed entry step
+      - Steps attempted in order
+      - Outcome per step (`success`/`blocked`/`failed`)
+      - Per-step summary of what happened, questions asked, answers provided, artifacts created, and runtime if known
+      - Workflow outcome: completed or first failure/blocker
+    - Create a new PM document on every orchestrator run (use the PM skill's create document operation without `id`):
+      - Title: `Implementation Report: <ISSUE_ID> - YYYY-MM-DDTHH-MM-SSZ`
+      - Content: full markdown report generated from this summary
 
 ## Important Notes
 

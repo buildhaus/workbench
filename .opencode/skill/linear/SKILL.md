@@ -29,6 +29,8 @@ All project management operations use Linear MCP tools. This skill maps generic 
 | Create a sub-issue (no `id`) | `linear_save_issue({ parentId: "{parent_issue_id}", title: "{title}", labels: ["{label}"], priority: {priority}, team: "{team_key}" })` |
 | Set issue dependency | `linear_save_issue({ id: "{issue_id}", blockedBy: ["{blocker_issue_id}"] })` |
 | Create a label | `linear_create_issue_label({ name: "{label_name}" })` |
+| List labels | `linear_list_issue_labels({ name: "{label_name}" })` |
+| List sub-issues | Retrieve the parent issue with relations — the response includes a `children` array with `id` and `title` for each |
 
 ## Status Management
 

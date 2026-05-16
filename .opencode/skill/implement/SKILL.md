@@ -108,7 +108,7 @@ A successful orchestrator run includes:
 - Partial runs include `Final Stop Reason: <reason>`
 - Final summary includes per-step outcomes and summaries
 - Final summary includes notable artifacts created by agents
-- A new Linear document is created on every run with title `Implementation Report: <ISSUE_ID> - YYYY-MM-DDTHH-MM-SSZ`
+- A new PM document is created on every run with title `Implementation Report: <ISSUE_ID> - YYYY-MM-DDTHH-MM-SSZ`
 - Document content is the full human-readable markdown implementation report
 
 ## Maintenance Guidance
