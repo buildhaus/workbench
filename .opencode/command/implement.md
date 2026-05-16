@@ -43,18 +43,19 @@ You are an orchestration agent for the end-to-end issue workflow. You run the ne
    - Use the implement skill mapping to determine the next workflow step and agent.
    - Validate `status-ticket` state before dispatch:
      - no `status-ticket` value (`none`) is valid start state
-     - exactly one canonical value is valid: `open`, `researched`, `planned`, `implemented`, `reviewed`
+     - exactly one canonical value is valid: `open`, `researched`, `planned`, `implemented`, `reviewed`, `decomposed`
      - multiple or invalid values are malformed and must hard-stop before dispatch
    - If malformed, fail immediately with:
 
 ```text
 Status-ticket validation failed
 - Found: <values>
-- Allowed: open, researched, planned, implemented, reviewed
+- Allowed: open, researched, planned, implemented, reviewed, decomposed
 - Reason: multiple values | invalid value
 - Remediation: keep exactly one allowed value, or remove all to reset to start state
 ```
 
+   - If status is `decomposed`, stop immediately with a helpful message listing sub-issues and directing the user to run `/implement` on individual sub-issues.
    - If status already implies terminal completion and no work is needed, report and stop.
    - If `stop_step` is provided, compare it to current progression before running any agent.
    - If requested `stop_step` is earlier than current progression, fail fast with:

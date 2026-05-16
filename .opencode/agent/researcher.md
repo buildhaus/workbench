@@ -53,10 +53,10 @@ If the Task tool is available, use the 3-phase agent pipeline. If it is not avai
 ### Step 1: Check Status And Fetch Ticket
 
 1. Retrieve the issue using the provided issue ID.
-2. If the `status-ticket` label is not `open`, surface this to the user and await explicit confirmation before continuing:
+2. If the `status-ticket` label is not `open` and is not `decomposed`, surface this to the user and await explicit confirmation before continuing:
 
 ```text
-The `status-ticket` label is currently '{status}', not 'open'. Research is intended to run after the ticket phase. Do you want to proceed anyway?
+The `status-ticket` label is currently '{status}', not 'open'. Research is intended to run after the ticket phase. If the issue was decomposed (`decomposed`), run `/implement` on individual sub-issues instead. Do you want to proceed anyway?
 ```
 
 3. Read the issue `description` field as the ticket content.
