@@ -45,7 +45,7 @@ function readSettingsFromPath(dirPath: string): RemoteSettings {
 function mergeDirectory(srcDir: string, destDir: string): void {
   mkdirSync(destDir, { recursive: true })
 
-  const entries = readdirSync(srcDir, { recursive: true })
+  const entries = readdirSync(srcDir, { recursive: true }) as string[]
   for (const entry of entries) {
     const srcPath = join(srcDir, entry)
     const destPath = join(destDir, entry)
