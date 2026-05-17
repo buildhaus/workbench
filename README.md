@@ -12,6 +12,23 @@
 - [gh CLI](https://cli.github.com) installed and authenticated (`gh auth login`)
 
 ### 2. Install the CLI
+
+Choose to install the CLI from the package manager or the source code.
+
+#### 2.1 Install from the package manager (recommended)
+
+Install the package from [![npm](https://img.shields.io/npm/v/@pap.dev/workbench)](https://www.npmjs.com/package/@pap.dev/workbench) or [![JSR](https://jsr.io/badges/@pap/workbench)](https://jsr.io/@pap/workbench).
+
+For example:
+
+```bash
+npm install -g @pap.dev/workbench
+```
+
+#### 2.2 Install from the cloned repo
+
+If you have cloned the repo and you don't want to install the package from npm (or other sources) then this is how you install the package.
+
 ```bash
 cd packages/workbench-cli
 bun install
@@ -20,12 +37,16 @@ bun link
 See [packages/workbench-cli/README.md](packages/workbench-cli/README.md) for full CLI documentation.
 
 ### 3. Initialize your workbench
+
+> [!IMPORTANT] 
+> Run the following command in a folder where workbench folder should be created.
+
 ```bash
 workbench --init
 ```
 This launches an interactive flow to fork, clone, and wire up your repositories.
 
-A generic development workbench for setting up and maintaining multiple projects from a single repository. Built and used internally by [PAP](https://pap.dev) — a no-code mobile building platform — and open for community use.
+A generic development workbench for setting up and maintaining multiple projects from a single repository.
 
 The repository acts as a hub: engineers fork it, configure their code and resource repositories as submodules, and get a consistent environment across the team.
 
@@ -41,6 +62,9 @@ The repository acts as a hub: engineers fork it, configure their code and resour
 | `thoughts/` | Planning notes, research, and ticket documentation (Not checked in) |
 
 ## Working on issues with OpenCode
+
+> [!NOTE]
+> At the moment only OpenCode is supported. Support for ClaudeCode will be added soon.
 
 Once your workbench is set up, the primary way to work on issues is through [OpenCode](https://opencode.ai/) using the built-in slash commands. These commands implement a structured flow from issue analysis through to review.
 
@@ -104,8 +128,14 @@ Under the hood, each slash command is powered by a dedicated sub-agent:
 # Orchestrated flow
 /implement PAP-1234
 
+# ONLY for GitHub Issues we also need to pass the {owner}/{repo}
+# Thisis needed because GitHub issues are unique in scope of a repository
+/implement 54 plan-and-publish/workbench
+# or up to a stage
+/implement 54 plan plan-and-publish/workbench
+
 # Orchestrated flow with optional stop-step bound
-/implement PAP-1234 ReSeArCh
+/implement PAP-1234 research
 ```
 
 `/implement` accepts an optional stop-step (`ticket|research|plan|execute|review|commit`).
@@ -120,6 +150,10 @@ The workbench supports multiple project management backends. The active backend 
 ```yaml
 project_management: github-issues
 ```
+
+Supported PM tools are:
+- Linear (`linear`)
+- GitHub Issues (`github-issues`)
 
 Authentication and setup instructions vary by backend — refer to the relevant PM tool's documentation for authentication steps.
 
