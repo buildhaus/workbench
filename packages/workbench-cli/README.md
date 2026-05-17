@@ -84,6 +84,17 @@ These flags work with both `--init` and standalone usage:
 
 > **What is ck?** [ck](https://beaconbay.github.io/ck/) is a hybrid code search tool by [BeaconBay](https://github.com/beaconbay) that fuses lexical (BM25/grep) precision with embedding-based recall, so you can find the right code even when the exact keywords aren't there.
 
+
+## Sync
+
+Fetches managed workbench files from the source repository and merges them into your local workbench. Sync clones the source, reads the configured `sync.paths`, prompts for confirmation, and auto-commits any changes. This keeps your workbench up to date with upstream improvements without manual file tracking.
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--sync` | Sync workbench files (`.opencode/`, `.workbench/schemas/`, `README.md`) from the source repository | `false` |
+
+Sync requires an initialized workbench and a clean working tree. Run `workbench --sync` from your workbench root.
+
 ## Examples
 
 ```bash
@@ -107,6 +118,8 @@ workbench --org myorg --code-repository https://github.com/myorg/backend
 
 # Interactive setup (existing repo)
 workbench --tui
+# Sync managed files from the source workbench
+workbench --sync
 ```
 
 ## What the setup wizard does
@@ -129,6 +142,10 @@ Afterwards, `.workbench/config.yaml` is written with the selected configuration.
 | `Remote creation failed` | `gh repo create` failed | Check `gh auth login` and org permissions |
 | `gh CLI is not authenticated` | `gh auth` not set up | Run `gh auth login` |
 | `Invalid name "X"` | Bad characters in name | Use only alphanumeric, `-`, `.`, `_` |
+| `No .workbench/config.yaml found` | Workbench not initialized | Run `workbench --init` first |
+| `No source.repository found in config` | Config predates sync feature | Re-initialize workbench |
+| `Working tree is not clean` | Uncommitted changes present | Commit or stash changes first |
+| `No sync.paths found in source` | Source workbench doesn't support sync | Contact source maintainer |
 
 ## Development
 

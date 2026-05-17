@@ -161,6 +161,22 @@ Authentication and setup instructions vary by backend — refer to the relevant 
 
 The setup wizard optionally indexes your repositories with [ck](https://beaconbay.github.io/ck/) — a hybrid code search tool by [BeaconBay](https://github.com/beaconbay) that fuses lexical (BM25/grep) precision with embedding-based recall, so you can find the right code even when the exact keywords aren't there.
 
+
+## Syncing Your Workbench
+
+The workbench is periodically updated with improvements to slash commands, skills, schemas, and documentation. To fetch the latest managed files from the source repository, run `workbench --sync` from your workbench root:
+
+```bash
+workbench --sync
+```
+
+Sync clones the source, applies the configured file paths (`.opencode/`, `.workbench/schemas/`, `README.md`), and auto-commits changes with a chore message. An interactive confirmation prompt lets you review and abort before any files are overwritten.
+
+Sync requires an initialized workbench (created via `workbench --init`) and a clean working tree. Run periodically to stay updated.
+
+See [packages/workbench-cli/README.md](packages/workbench-cli/README.md) for full flag documentation and troubleshooting.
+
+
 ## Development Setup
 
 To set up the workbench CLI for local development:
