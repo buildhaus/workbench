@@ -1,5 +1,5 @@
 {
-  "name": "@pap/workbench",
+  "name": "@workbench-codes/workbench",
   "version": "0.1.19",
   "license": "MIT",
   "exports": "./src/index.ts"

@@ -1,8 +1,8 @@
 # workbench
 
-[![CI](https://github.com/plan-and-publish/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/plan-and-publish/workbench/actions/workflows/ci-workbench-cli.yml)
-[![npm](https://img.shields.io/npm/v/@pap.dev/workbench)](https://www.npmjs.com/package/@pap.dev/workbench)
-[![JSR](https://jsr.io/badges/@pap/workbench)](https://jsr.io/@pap/workbench)
+[![CI](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml)
+[![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench)
+[![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Getting Started
@@ -17,12 +17,12 @@ Choose to install the CLI from the package manager or the source code.
 
 #### 2.1 Install from the package manager (recommended)
 
-Install the package from [![npm](https://img.shields.io/npm/v/@pap.dev/workbench)](https://www.npmjs.com/package/@pap.dev/workbench) or [![JSR](https://jsr.io/badges/@pap/workbench)](https://jsr.io/@pap/workbench).
+Install the package from [![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench) or [![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench).
 
 For example:
 
 ```bash
-npm install -g @pap.dev/workbench
+npm install -g @workbench-codes/workbench
 ```
 
 #### 2.2 Install from the cloned repo
@@ -130,9 +130,9 @@ Under the hood, each slash command is powered by a dedicated sub-agent:
 
 # ONLY for GitHub Issues we also need to pass the {owner}/{repo}
 # Thisis needed because GitHub issues are unique in scope of a repository
-/implement 54 plan-and-publish/workbench
+/implement 54 workbench-codes/workbench
 # or up to a stage
-/implement 54 plan plan-and-publish/workbench
+/implement 54 plan workbench-codes/workbench
 
 # Orchestrated flow with optional stop-step bound
 /implement PAP-1234 research

@@ -1,8 +1,8 @@
 # workbench CLI
 
-[![CI](https://github.com/plan-and-publish/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/plan-and-publish/workbench/actions/workflows/ci-workbench-cli.yml)
-[![npm](https://img.shields.io/npm/v/@pap.dev/workbench)](https://www.npmjs.com/package/@pap.dev/workbench)
-[![JSR](https://jsr.io/badges/@pap/workbench)](https://jsr.io/@pap/workbench)
+[![CI](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml)
+[![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench)
+[![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
 
 A terminal UI for initializing a workbench repository — clone and wire up git submodules interactively or non-interactively.
@@ -64,7 +64,7 @@ workbench --tui
 |------|-------------|---------|
 | `--init` | Initialize a new workbench (clone) | `false` |
 | `--name <name>` | Name for the local folder | `workbench` |
-| `--source <repo>` | Source repository to clone from | `plan-and-publish/workbench` |
+| `--source <repo>` | Source repository to clone from | `workbench-codes/workbench` |
 | `--remote` | Create a private GitHub repo and set as origin | `false` |
 | `--no-tui` | Skip TUI, use defaults or provided values | `false` |
 
@@ -172,7 +172,7 @@ npm run release:minor   # 0.x.0
 npm run release:major   # x.0.0
 ```
 
-See [GitHub Releases](https://github.com/plan-and-publish/workbench/releases) for the version history.
+See [GitHub Releases](https://github.com/workbench-codes/workbench/releases) for the version history.
 
 ## Contributing
 
