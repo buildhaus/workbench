@@ -4,7 +4,7 @@ import type { Repo } from "../screens/repoSelect.ts"
 
 export interface WorkbenchConfig {
   source: {
-    repository: string   // e.g., "plan-and-publish/workbench"
+    repository: string   // e.g., "workbench-codes/workbench"
     branch: string       // e.g., "main"
   }
   github: { org: string }

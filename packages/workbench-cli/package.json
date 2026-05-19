@@ -1,5 +1,5 @@
 {
-  "name": "@pap.dev/workbench",
+  "name": "@workbench-codes/workbench",
   "version": "0.1.19",
   "type": "module",
   "bin": {
@@ -27,9 +27,10 @@
     "typescript": "^5.0.0"
   },
   "license": "MIT",
+  "homepage": "https://workbench.codes",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plan-and-publish/workbench",
+    "url": "https://github.com/workbench-codes/workbench",
     "directory": "packages/workbench-cli"
   }
 }
