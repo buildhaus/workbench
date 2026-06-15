@@ -29,7 +29,7 @@ export function parseCliArgs(): CliArgs {
       "resource-branch": { type: "string", default: "main" },
       index: { type: "string", default: "on" },
       init: { type: "boolean", default: false },
-      source: { type: "string", default: "workbench-codes/workbench" },
+      source: { type: "string", default: "buildhaus/workbench" },
       remote: { type: "boolean", default: false },
       name: { type: "string", default: "workbench" },
       "no-tui": { type: "boolean", default: false },
@@ -71,7 +71,7 @@ USAGE:
 OPTIONS:
   --init                          Initialize a new workbench (clone)
   --name <name>                   Name for the local folder (default: workbench)
-  --source <repo>                 Source repository to clone from (default: workbench-codes/workbench)
+  --source <repo>                 Source repository to clone from (default: buildhaus/workbench)
   --remote                        Create a private GitHub repo and set as origin
   --no-tui                        Skip TUI, use defaults or provided values
   --org <name>                    GitHub organization name

@@ -4,7 +4,7 @@ Thank you for your interest in contributing! This document covers how to get set
 
 ## Who uses this
 
-workbench is built and used by the [workbench-codes](https://workbench.codes) team internally and is open for community contributions.
+workbench is built and used by the [buildhaus](https://buildhaus.ai) team internally and is open for community contributions.
 
 ## Project structure
 
@@ -25,7 +25,7 @@ workbench/
 - [gh CLI](https://cli.github.com) installed and authenticated
 
 ```bash
-git clone https://github.com/workbench-codes/workbench.git
+git clone https://github.com/buildhaus/workbench.git
 cd workbench/packages/workbench-cli
 bun install
 ```
@@ -66,11 +66,11 @@ npm run release:minor   # 0.x.0
 npm run release:major   # x.0.0
 ```
 
-This bumps the version, commits, and tags. Pushing the tag triggers the publish workflow, which publishes to both [npm](https://www.npmjs.com/package/@workbench-codes/workbench) and [JSR](https://jsr.io/@workbench-codes/workbench).
+This bumps the version, commits, and tags. Pushing the tag triggers the publish workflow, which publishes to both [npm](https://www.npmjs.com/package/@buildhaus/workbench) and [JSR](https://jsr.io/@buildhaus/workbench).
 
 ## Reporting bugs
 
-Open an issue using the [bug report template](https://github.com/workbench-codes/workbench/issues/new?template=bug_report.md).
+Open an issue using the [bug report template](https://github.com/buildhaus/workbench/issues/new?template=bug_report.md).
 
 ## Code of Conduct
 
