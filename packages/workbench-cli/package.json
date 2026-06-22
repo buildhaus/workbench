@@ -1,6 +1,6 @@
 {
   "name": "@buildhaus/workbench",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "type": "module",
   "bin": {
     "workbench": "dist/index.js"
