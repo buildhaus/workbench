@@ -12,9 +12,9 @@ AI coding agents lose context between sessions. Without a structured workspace, 
 ### Problem 3: Agentic SDLC
 Without standardized workflows, each team member interacts with AI coding agents differently — different prompts, different quality gates, different review processes. This leads to uneven code quality and unpredictable delivery. Workbench provides a structured Agentic Software Development Life Cycle (ASDLC) — a pipeline of slash commands (`/ticket`, `/research`, `/plan`, `/execute`, `/review`, `/commit`) that guide every issue through consistent stages, each powered by a dedicated sub-agent with a specific responsibility. The human runs the slash commands; the agents execute the structured workflows.
 
-[![CI](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml)
-[![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench)
-[![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench)
+[![CI](https://github.com/buildhaus/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/buildhaus/workbench/actions/workflows/ci-workbench-cli.yml)
+[![npm](https://img.shields.io/npm/v/@buildhaus/workbench)](https://www.npmjs.com/package/@buildhaus/workbench)
+[![JSR](https://jsr.io/badges/@buildhaus/workbench)](https://jsr.io/@buildhaus/workbench)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Getting Started
@@ -29,12 +29,12 @@ Choose to install the CLI from the package manager or the source code.
 
 #### 2.1 Install from the package manager (recommended)
 
-Install the package from [![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench) or [![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench).
+Install the package from [![npm](https://img.shields.io/npm/v/@buildhaus/workbench)](https://www.npmjs.com/package/@buildhaus/workbench) or [![JSR](https://jsr.io/badges/@buildhaus/workbench)](https://jsr.io/@buildhaus/workbench).
 
 For example:
 
 ```bash
-npm install -g @workbench-codes/workbench
+npm install -g @buildhaus/workbench
 ```
 
 #### 2.2 Install from the cloned repo
@@ -136,9 +136,9 @@ Under the hood, each slash command is powered by a dedicated sub-agent:
 
 # ONLY for GitHub Issues we also need to pass the {owner}/{repo}
 # Thisis needed because GitHub issues are unique in scope of a repository
-/implement 54 workbench-codes/workbench
+/implement 54 buildhaus/workbench
 # or up to a stage
-/implement 54 plan workbench-codes/workbench
+/implement 54 plan buildhaus/workbench
 
 # Orchestrated flow with optional stop-step bound
 /implement PAP-1234 research

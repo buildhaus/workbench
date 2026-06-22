@@ -1,5 +1,5 @@
 {
-  "name": "@workbench-codes/workbench",
+  "name": "@buildhaus/workbench",
   "version": "0.1.21",
   "license": "MIT",
   "exports": "./src/index.ts"

@@ -1,5 +1,5 @@
 {
-  "name": "@workbench-codes/workbench",
+  "name": "@buildhaus/workbench",
   "version": "0.1.21",
   "type": "module",
   "bin": {
@@ -27,10 +27,10 @@
     "typescript": "^5.0.0"
   },
   "license": "MIT",
-  "homepage": "https://workbench.codes",
+  "homepage": "https://buildhaus.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/workbench-codes/workbench.git",
+    "url": "git+https://github.com/buildhaus/workbench.git",
     "directory": "packages/workbench-cli"
   },
   "description": "Agentic Workbench",
@@ -40,8 +40,8 @@
     "agent",
     "workbench"
   ],
-  "author": "Workbench Codes",
+  "author": "BuildHaus",
   "bugs": {
-    "url": "https://github.com/workbench-codes/workbench/issues"
+    "url": "https://github.com/buildhaus/workbench/issues"
   }
 }

@@ -1,14 +1,14 @@
 # workbench CLI
 
-[![CI](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/workbench-codes/workbench/actions/workflows/ci-workbench-cli.yml)
-[![npm](https://img.shields.io/npm/v/@workbench-codes/workbench)](https://www.npmjs.com/package/@workbench-codes/workbench)
-[![JSR](https://jsr.io/badges/@workbench-codes/workbench)](https://jsr.io/@workbench-codes/workbench)
+[![CI](https://github.com/buildhaus/workbench/actions/workflows/ci-workbench-cli.yml/badge.svg)](https://github.com/buildhaus/workbench/actions/workflows/ci-workbench-cli.yml)
+[![npm](https://img.shields.io/npm/v/@buildhaus/workbench)](https://www.npmjs.com/package/@buildhaus/workbench)
+[![JSR](https://jsr.io/badges/@buildhaus/workbench)](https://jsr.io/@buildhaus/workbench)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
 
 ## What is Workbench?
 Workbench is a mono-repo template for agentic engineering — it gives teams a consistent environment with structured slash-command workflows for working with AI coding agents.
 
-[Learn more →](https://github.com/workbench-codes/workbench/blob/main/README.md#what-is-workbench)
+[Learn more →](https://github.com/buildhaus/workbench/blob/main/README.md#what-is-workbench)
 
 ## Prerequisites
 
@@ -67,7 +67,7 @@ workbench --tui
 |------|-------------|---------|
 | `--init` | Initialize a new workbench (clone) | `false` |
 | `--name <name>` | Name for the local folder | `workbench` |
-| `--source <repo>` | Source repository to clone from | `workbench-codes/workbench` |
+| `--source <repo>` | Source repository to clone from | `buildhaus/workbench` |
 | `--remote` | Create a private GitHub repo and set as origin | `false` |
 | `--no-tui` | Skip TUI, use defaults or provided values | `false` |
 
@@ -175,7 +175,7 @@ npm run release:minor   # 0.x.0
 npm run release:major   # x.0.0
 ```
 
-See [GitHub Releases](https://github.com/workbench-codes/workbench/releases) for the version history.
+See [GitHub Releases](https://github.com/buildhaus/workbench/releases) for the version history.
 
 ## Contributing
 
