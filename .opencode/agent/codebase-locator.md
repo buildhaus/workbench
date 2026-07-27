@@ -4,7 +4,7 @@ mode: subagent
 hidden: true
 temperature: 0.1
 tools:
-  read: false
+  read: true
   grep: true
   glob: true
   list: true
