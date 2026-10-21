@@ -39,9 +39,9 @@ After implementing a phase:
 - Update execution notes and todos.
 - Batch verification at natural stopping points without skipping required checks.
 
-## Sub-Task Usage
+## Subagent Usage
 
-Use sub-tasks sparingly, mainly for targeted debugging or exploring unfamiliar territory. Include pathway context in spawned agent prompts.
+Use subagents sparingly, mainly for targeted debugging or exploring unfamiliar territory. Include pathway context in spawned agent prompts.
 
 ## Resuming Work
 

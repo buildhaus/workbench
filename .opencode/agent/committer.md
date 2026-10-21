@@ -2,21 +2,40 @@
 description: Workflow agent for committing changes. Creates atomic git commits with conventional messages and issue trailers. Spawn with an issue ID.
 mode: subagent
 hidden: true
-temperature: 0.1
-tools:
-  read: true
-  grep: false
-  glob: false
-  list: false
-  ck_semantic_search: false
-  ck_hybrid_search: false
-  bash: true
-  edit: false
-  write: false
-  patch: false
-  todoread: false
-  todowrite: false
-  webfetch: false
+request:
+  body:
+    temperature: 0.1
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
+  - action: grep
+    resource: "*"
+    effect: deny
+  - action: glob
+    resource: "*"
+    effect: deny
+  - action: subagent
+    resource: "*"
+    effect: deny
+  - action: question
+    resource: "*"
+    effect: deny
+  - action: todowrite
+    resource: "*"
+    effect: deny
+  - action: webfetch
+    resource: "*"
+    effect: deny
+  - action: websearch
+    resource: "*"
+    effect: deny
+  - action: ck_semantic_search
+    resource: "*"
+    effect: deny
+  - action: ck_hybrid_search
+    resource: "*"
+    effect: deny
 ---
 
 # Commit Workflow Agent
@@ -27,7 +46,7 @@ You create atomic git commits for changes made during the workflow.
 
 Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
 
-skill({ name: 'workbench-context' })
+skill({ id: 'workbench-context' })
 
 > Bootstrapping handled by the `workbench-context` skill. This agent uses only the PM skill's commit trailer format and does not perform status transitions.
 

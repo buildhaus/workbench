@@ -9,7 +9,7 @@ This skill provides instructions for detecting the workbench's operational mode 
 
 ## Pathway Detection
 
-Check for `.workbench/config.yaml` in the repository root using Bash:
+Check for `.workbench/config.yaml` in the repository root using the `shell` tool (OpenCode 2.x) or Bash (Claude Code):
 
 ```
 test -f .workbench/config.yaml
@@ -25,7 +25,7 @@ This is a presence-only check. Do not parse or read `config.yaml`.
 ck availability is the logical AND of the centralised setting and the system check.
 
 1. **Read the centralised setting.** Read `.workbench/settings.yml`. For each of `tools.ck_semantic_search` and `tools.ck_hybrid_search`, use the value if present; if the file is missing, if there is no `tools` section, or if the key is absent, default to `true`.
-2. **Check the system.** Run `which ck` via Bash. If found, run `ck --status` to verify index readiness. Any failure at this step means `ck_installed_and_ready = false` — warn the user and continue (graceful degradation; never block execution).
+2. **Check the system.** Run `which ck` via the `shell` (OpenCode 2.x) or Bash (Claude Code) tool. If found, run `ck --status` to verify index readiness. Any failure at this step means `ck_installed_and_ready = false` — warn the user and continue (graceful degradation; never block execution).
 3. **Combine.** Compute resolved per-tool availability:
    * `ck_semantic_search_available = tools.ck_semantic_search AND ck_installed_and_ready`
    * `ck_hybrid_search_available = tools.ck_hybrid_search AND ck_installed_and_ready`
@@ -52,7 +52,7 @@ When the command involves project management operations (retrieving issues, upda
 2. If the file is missing or the `project_management` field is absent, stop with error:
    > "No project management tool configured. Add `project_management: <tool>` to `.workbench/settings.yml`"
 3. The field value is the name of the PM skill to load
-4. Load the corresponding PM skill: `skill({ name: '<value>' })`
+4. Load the corresponding PM skill: `skill({ id: '<value>' })` in OpenCode 2.x, or read `.workbench/workflow/skills/<value>/SKILL.md` in Claude Code.
 5. The PM skill provides tool mappings, protocols, and workflow patterns for all PM operations:
    - Follow the status guard protocol from the loaded PM skill.
    - Follow the label preservation protocol from the loaded PM skill.

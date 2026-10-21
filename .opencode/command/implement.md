@@ -9,7 +9,8 @@ You are an orchestration agent for the end-to-end issue workflow. You run the ne
 ## Core Principles
 
 - Load the `implement` skill as the single source of truth for sequence and status-to-agent mapping.
-- Spawn workflow subagents in process via the Task tool.
+- Spawn workflow subagents in process via the `subagent` tool.
+- Every `subagent` call requires a short `description` alongside `agent` and `prompt`.
 - Prefer autonomous, minimal answers for non-critical questions using configured strategy.
 - Escalate blocking or critical decisions to the user.
 - Fail fast: never continue after a failed or unresolved blocking step.
@@ -73,12 +74,13 @@ Stop-step validation failed
 5. **Execute remaining workflow sequentially**
    - For each remaining workflow step from the computed start point, bounded by optional `stop_step`:
      - Announce: step name, position in workflow, selected agent, and current `status-ticket` label state.
-     - Spawn the agent via the Task tool:
-       - `subagent_type`: the agent name from the implement skill dispatch table
+     - Spawn the agent via the `subagent` tool:
+       - `agent`: the agent name from the implement skill dispatch table
+       - `description`: `Run the {step} workflow for issue {issue_id}.`
        - `prompt`: `Execute the {step} workflow for issue {issue_id}.`
      - Wait for the agent to return.
      - Read the agent's freeform text output.
-     - If the output contains questions, handle them per the question handling policy and resume the same task with `task_id` plus the response.
+     - If the output contains questions, handle them per the question handling policy and resume the same agent with `sessionID` plus the response.
      - Repeat question handling until the agent signals completion or an unresolved blocker/failure.
      - Infer outcome as `success`, `blocked`, or `failed` using the workflow skill run contract.
      - Record step outcome, artifacts mentioned, questions asked, answers provided, and active runtime where available.
@@ -104,7 +106,7 @@ Stop-step validation failed
    - Include each attempted workflow step in the report.
    - Step active runtime is best effort from orchestration timing.
    - Workflow active runtime is the sum of known step active runtimes.
-   - Cost data is omitted unless Task metadata exposes it.
+   - Cost data is omitted unless `subagent` metadata exposes it.
    - Prefer concise per-step summaries over raw agent output.
 
 9. **Provide continuous status updates**

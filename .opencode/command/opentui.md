@@ -28,7 +28,7 @@ If $ARGUMENTS contains `--update-skill`:
 ### Step 2: Load opentui skill
 
 ```
-skill({ name: 'opentui' })
+skill({ id: 'opentui' })
 ```
 
 ### Step 3: Identify task type from user request

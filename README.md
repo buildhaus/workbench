@@ -64,6 +64,7 @@ This launches an interactive flow to fork, clone, and wire up your repositories.
 | Folder | Purpose |
 |--------|---------|
 | `.opencode/` | Slash commands, workflow sub-agents, skills, and MCP configuration |
+| `AGENTS.md` | Canonical harness-neutral agent instructions (imported by `CLAUDE.md`) |
 | `packages/workbench-cli/` | The `workbench` CLI tool (TypeScript, Bun) |
 | `projects/` | Git submodules for code repositories |
 | `resources/` | Git submodules for documentation/resource repositories |
@@ -76,7 +77,7 @@ Once your workbench is set up, work on issues using the built-in slash commands 
 
 ### Prerequisites
 
-- [OpenCode](https://opencode.ai/) or [Claude Code](https://claude.ai/code) installed
+- [OpenCode](https://opencode.ai/) 2.x (verified on 2.1.2) or [Claude Code](https://claude.ai/code) installed
 - A configured project management tool (see [Project Management](#project-management) below)
 
 ### The development flow
@@ -176,7 +177,7 @@ The workbench is periodically updated with improvements to slash commands, skill
 workbench --sync
 ```
 
-Sync clones the source, applies the configured file paths (`.opencode/`, `.workbench/schemas/`, `README.md`), and auto-commits changes with a chore message. An interactive confirmation prompt lets you review and abort before any files are overwritten.
+Sync clones the source, applies the configured file paths (`.opencode/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`, `.workbench/schemas/`, `.workbench/workflow/`, `README.md`), and auto-commits changes with a chore message. An interactive confirmation prompt lets you review and abort before any files are overwritten.
 
 Sync requires an initialized workbench (created via `workbench --init`) and a clean working tree. Run periodically to stay updated.
 

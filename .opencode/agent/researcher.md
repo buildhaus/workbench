@@ -2,20 +2,25 @@
 description: Workflow agent for researching an issue. Spawns sub-agents in a 3-phase pipeline (locate, pattern-find, analyze) and synthesizes findings into a research document. Spawn with an issue ID.
 mode: subagent
 hidden: true
-temperature: 0.1
-tools:
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  edit: false
-  write: true
-  patch: false
-  todoread: true
-  todowrite: true
-  webfetch: false
-  task: true
+request:
+  body:
+    temperature: 0.1
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
+  - action: edit
+    resource: "thoughts/*"
+    effect: allow
+  - action: question
+    resource: "*"
+    effect: deny
+  - action: webfetch
+    resource: "*"
+    effect: deny
+  - action: websearch
+    resource: "*"
+    effect: deny
 ---
 
 # Research Workflow Agent
@@ -26,7 +31,7 @@ You conduct comprehensive research across the codebase by spawning targeted task
 
 Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
 
-skill({ name: 'workbench-context' })
+skill({ id: 'workbench-context' })
 
 > Bootstrapping handled by the `workbench-context` skill.
 

@@ -11,7 +11,7 @@ Thin wrapper that bootstraps context and spawns the researcher agent.
 1. **Parse arguments**
    Extract the issue ID from `$ARGUMENTS`. Normalize to uppercase (e.g., `pap-123` → `PAP-123`).
 
-2. **Bootstrap context** following the Workbench Context section in `CLAUDE.md`:
+2. **Bootstrap context** following the Workbench Context section in `AGENTS.md` (imported by `CLAUDE.md`):
    - Detect pathway (check for `.workbench/config.yaml`)
    - Check ck availability
    - Resolve PM tool from `.workbench/settings.yml`
@@ -19,10 +19,10 @@ Thin wrapper that bootstraps context and spawns the researcher agent.
 3. **Spawn the researcher agent** via the Agent tool:
    - `subagent_type`: `"claude"`
    - Include in the prompt:
-     - The resolved pathway context block (see CLAUDE.md "Context Passing Format")
+     - The resolved pathway context block (see AGENTS.md "Context Passing Format", imported by CLAUDE.md)
      - `PM tool: {pm_tool}`
      - `To load a skill, read .workbench/workflow/skills/{name}/SKILL.md.`
-     - `When body files reference the Task tool, use the Agent tool instead.`
+     - `When body files reference the subagent tool, use the Agent tool. Map agent → subagent_type and sessionID → SendMessage with the agent ID.`
      - `When spawning sub-agents (codebase-locator, codebase-analyzer, codebase-pattern-finder, thoughts-locator, thoughts-analyzer), use the Agent tool with subagent_type "Explore" and include the body file path in the prompt (e.g., "Read .workbench/workflow/agents/codebase-locator.body.md and follow it for: {task}").`
      - `Read .workbench/workflow/agents/researcher.body.md and follow those instructions for issue {issue_id}.`
 

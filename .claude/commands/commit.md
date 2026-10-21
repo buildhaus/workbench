@@ -11,14 +11,14 @@ Thin wrapper that bootstraps context and spawns the committer agent.
 1. **Parse arguments**
    Extract the optional issue ID from `$ARGUMENTS`. Normalize to uppercase if provided.
 
-2. **Bootstrap context** following the Workbench Context section in `CLAUDE.md`:
+2. **Bootstrap context** following the Workbench Context section in `AGENTS.md` (imported by `CLAUDE.md`):
    - Detect pathway (check for `.workbench/config.yaml`)
    - Resolve PM tool from `.workbench/settings.yml` (committer-lite mode — trailer format only)
 
 3. **Spawn the committer agent** via the Agent tool:
    - `subagent_type`: `"claude"`
    - Include in the prompt:
-     - The resolved pathway context block (see CLAUDE.md "Context Passing Format")
+     - The resolved pathway context block (see AGENTS.md "Context Passing Format", imported by CLAUDE.md)
      - `PM tool: {pm_tool} (committer-lite mode: use only for commit trailer format)`
      - `To load a skill, read .workbench/workflow/skills/{name}/SKILL.md.`
      - `Issue ID: {issue_id}` (or omit if not provided)
