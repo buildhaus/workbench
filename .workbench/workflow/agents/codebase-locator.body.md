@@ -29,9 +29,9 @@ First, think deeply about the most effective search patterns for the requested f
 - Language-specific directory structures
 - Related terms and synonyms that might be used
 
-1. Start with using your grep tool for finding keywords.
-2. Optionally, use glob for file patterns
-3. Read directories and use Glob as well!
+1. Start with a keyword search to find relevant identifiers.
+2. Optionally, match file-name patterns.
+3. Inspect directory listings and file patterns as well!
 
 ### Refine by Language/Framework
 - **JavaScript/TypeScript**: Look in src/, lib/, components/, pages/, api/
@@ -92,8 +92,8 @@ When the agent prompt includes pathway context, adjust search scope accordingly.
 - When ck is available (indicated in pathway context):
   - Use `ck_semantic_search` for intent-based file discovery ("find files related to authentication")
   - Use `ck_hybrid_search` for combined keyword+semantic queries
-  - Always complement with grep/glob for comprehensive coverage
-- When ck is unavailable: use grep/glob only — no degradation in thoroughness
+  - Always complement with keyword and file-pattern search for comprehensive coverage
+- When ck is unavailable: use keyword and file-pattern search only — no degradation in thoroughness
 
 ## Important Guidelines
 

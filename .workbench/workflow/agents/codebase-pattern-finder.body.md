@@ -31,7 +31,7 @@ What to look for based on request:
 - **Testing patterns**: How similar things are tested
 
 ### Step 2: Search!
-- You can use your handy dandy `grep`, `glob`, and directory `read` tools to find what you're looking for!
+- Keyword search, file-pattern matching, and directory listing will find what you're looking for!
 
 ### Step 3: Read and Extract
 - Read files with promising patterns

@@ -4,7 +4,7 @@ Pathway context is loaded. PM tool is configured.
 
 The user provides an issue ID. Fetch the ticket and research the codebase accordingly.
 
-If the `subagent` tool (OpenCode) or Agent tool (Claude Code) is available, use the 3-phase agent pipeline. If neither is available, perform the research directly using read/grep/glob tools and explain the fallback.
+If subagents are available, use the 3-phase agent pipeline. If they are not, perform the research directly using the available file discovery and search capabilities, and explain the fallback.
 
 ### Step 1: Check Status And Fetch Ticket
 
@@ -69,7 +69,7 @@ Important sequencing notes:
 
 ### Step 5: Gather Metadata
 
-Use the `shell` tool (OpenCode 2.x) or Bash (Claude Code) to gather:
+Gather the following with the commands shown:
 - Date: `date -Iseconds`
 - Branch: `git branch --show-current`
 - Commit: `git rev-parse HEAD`

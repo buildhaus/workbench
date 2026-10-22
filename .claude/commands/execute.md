@@ -11,7 +11,7 @@ Thin wrapper that bootstraps context and spawns the executer agent.
 1. **Parse arguments**
    Extract the issue ID from `$ARGUMENTS`. Normalize to uppercase (e.g., `pap-123` → `PAP-123`).
 
-2. **Bootstrap context** following the Workbench Context section in `AGENTS.md` (imported by `CLAUDE.md`):
+2. **Bootstrap context** following the Workbench Context section in `AGENTS.md`:
    - Detect pathway (check for `.workbench/config.yaml`)
    - Check ck availability
    - Resolve PM tool from `.workbench/settings.yml`
@@ -19,7 +19,7 @@ Thin wrapper that bootstraps context and spawns the executer agent.
 3. **Spawn the executer agent** via the Agent tool:
    - `subagent_type`: `"claude"`
    - Include in the prompt:
-     - The resolved pathway context block (see AGENTS.md "Context Passing Format", imported by CLAUDE.md)
+     - The resolved pathway context block (see the Context Passing Format in AGENTS.md)
      - `PM tool: {pm_tool}`
      - `To load a skill, read .workbench/workflow/skills/{name}/SKILL.md.`
      - `When body files reference the subagent tool, use the Agent tool. Map agent → subagent_type and sessionID → SendMessage with the agent ID.`

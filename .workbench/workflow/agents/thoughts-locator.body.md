@@ -36,8 +36,8 @@ resources/             # Project documentation (Pathway 2 only)
 ```
 
 ### Search Patterns
-- Use grep for content searching
-- Use glob for filename patterns
+- Use keyword search for content
+- Use file-name patterns for discovery
 - Check standard subdirectories
 
 ## Output Format

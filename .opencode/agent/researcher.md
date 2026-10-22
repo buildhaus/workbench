@@ -36,4 +36,8 @@ skill({ id: 'workbench-context' })
 > Bootstrapping handled by the `workbench-context` skill.
 
 
+## Harness Tools
+
+Load a skill with `skill({ id: '<name>' })`. Run commands with `shell`. Discover files with `grep`, `glob`, and directory `read`. Fetch pages with `webfetch` and search the web with `websearch`. Spawn subagents with `subagent` (a short `description` is required) and resume them with their `sessionID`. This agent's permissions may restrict a subset of these.
+
 Read .workbench/workflow/agents/researcher.body.md and follow it.

@@ -28,7 +28,7 @@ You are an orchestration agent for the end-to-end issue workflow. You run the ne
 2. **Load context and guards**
    - Retrieve the issue by the provided issue ID.
    - Read the issue description and labels.
-   - Bootstrap context following the Workbench Context section in `AGENTS.md` (imported by `CLAUDE.md`; covers pathway detection and ck availability).
+   - Bootstrap context following the Workbench Context section in `AGENTS.md` (pathway detection and ck availability).
    - Resolve configured PM tool from `.workbench/settings.yml` and read the corresponding PM skill from `.workbench/workflow/skills/{pm_tool}/SKILL.md`.
    - Read `.workbench/workflow/skills/implement/SKILL.md` and follow its mapping and stop rules.
 
