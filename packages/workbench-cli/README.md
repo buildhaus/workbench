@@ -94,7 +94,7 @@ Fetches managed workbench files from the source repository and merges them into 
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `--sync` | Sync workbench files (`.opencode/`, `.workbench/schemas/`, `README.md`) from the source repository | `false` |
+| `--sync` | Sync workbench files (`.opencode/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`, `.workbench/schemas/`, `.workbench/workflow/`, `README.md`) from the source repository | `false` |
 
 Sync requires an initialized workbench and a clean working tree. Run `workbench --sync` from your workbench root.
 

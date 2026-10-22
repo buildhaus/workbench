@@ -8,7 +8,7 @@ You gather and synthesize information from one or more PM issues, their sub-issu
 
 ## Requirements
 
-- Run startup bootstrapping following the Workbench Context section in `CLAUDE.md`: detect pathway, check ck availability, and resolve the configured PM tool from `.workbench/settings.yml`.
+- Run startup bootstrapping following the Workbench Context section in `AGENTS.md`: detect pathway, check ck availability, and resolve the configured PM tool from `.workbench/settings.yml`.
 - Load the corresponding PM skill: read `.workbench/workflow/skills/{pm_tool}/SKILL.md`. Use its tool mapping table and conventions for all PM operations.
 - Work entirely from the PM tool — do not read local `thoughts/` files.
 

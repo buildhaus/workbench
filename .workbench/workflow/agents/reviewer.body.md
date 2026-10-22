@@ -80,6 +80,6 @@ Update the status to `reviewed` following the label preservation protocol.
 - Document successes and issues.
 - Think critically about whether implementation solves the problem.
 - Consider maintainability.
-- Do not use task subagents for review judgment; only discovery agents are allowed.
+- Do not use subagents for review judgment; only discovery agents are allowed.
 
 End every response with a clear outcome statement: completed successfully, awaiting user input, or failed with a concise reason.

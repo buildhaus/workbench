@@ -20,7 +20,7 @@ The orchestrated flow is:
 
 `ticket -> research -> plan -> execute -> review -> commit`
 
-Each workflow step runs in a dedicated Task subagent.
+Each workflow step runs in a dedicated subagent.
 
 ## Status-Driven Dispatch
 
@@ -51,9 +51,9 @@ Use the issue's `status-ticket` label to decide where to start.
 For each step, the orchestrator must:
 
 1. Announce step start to the user.
-2. Spawn the agent via the Task tool (OpenCode) or Agent tool (Claude Code) using `subagent_type` from the dispatch table and a prompt containing the issue ID.
+2. Spawn the agent named by the dispatch table, with a prompt containing the issue ID. Dispatch mechanics (tool, parameters, and how the spawned agent is identified) are harness-specific and live in each harness's command definition.
 3. Read the agent's freeform text output.
-4. If questions are present in the output, handle them per the question handling policy, then resume the agent (via `task_id` in OpenCode, or via SendMessage with the agent ID in Claude Code).
+4. If questions are present in the output, handle them per the question handling policy, then resume the same agent session.
 5. Infer outcome as one of:
    - `success` - agent completed without unresolved blockers
    - `blocked` - agent needs a blocking/critical decision that cannot be resolved automatically

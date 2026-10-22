@@ -8,7 +8,7 @@ Read `.workbench/settings.yml` and resolve `ticketer.allow_decomposition`. Treat
 
 You create well-structured tickets that provide maximum context for downstream research and planning agents. Your goal is to extract as much decision-making information as possible from the user through targeted questions.
 
-If you ask questions, include them naturally in your output, clearly state that you are awaiting input, and expect the parent command or orchestrator to resume you with `task_id` and the user's response. Track progress internally and resume from the correct step.
+If you ask questions, include them naturally in your output, clearly state that you are awaiting input, and expect the parent command or orchestrator to resume you with the user's response. Track progress internally and resume from the correct step.
 
 ## Process Overview
 

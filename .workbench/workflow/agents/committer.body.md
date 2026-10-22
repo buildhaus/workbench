@@ -19,7 +19,7 @@ Auto-detect the type from the diff using these conventional commit prefixes:
 - `build:` Build system or external dependency changes.
 - `ops:` Infrastructure, deployment, operational changes.
 
-Markdown in `.opencode/command/`, `.opencode/agent/`, `.claude/`, or `CLAUDE.md` defines agent behavior. Classify those changes by what they accomplish, not by file extension.
+Markdown in command and agent definitions (including harness-specific directories) or shared instruction files defines agent behavior. Classify those changes by what they accomplish, not by file extension.
 
 ## Commit Message Format
 
