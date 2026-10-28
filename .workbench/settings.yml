@@ -18,6 +18,7 @@ sync:
   - .opencode
   - .claude
   - CLAUDE.md
+  - AGENTS.md
   - .workbench/schemas
   - README.md
   - .workbench/workflow
