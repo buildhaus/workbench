@@ -50,7 +50,6 @@ When the agent prompt includes pathway context, adjust analysis scope accordingl
 **Pathway 2 (configured project):**
 - Read and analyze files under `projects/` for target project code
 - Use `packages/` only for workbench CLI internals analysis
-- When ck is available, use `ck_semantic_search` for finding related code across codebases
 
 ## Output Format
 

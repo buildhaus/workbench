@@ -163,7 +163,6 @@ async function runNonInteractiveInit(args: CliArgs): Promise<void> {
     codeRepos,
     resourceRepos,
     branches,
-    shouldIndex: args.index,
   }
 
   const stdoutProgress: InitProgress = {
@@ -261,7 +260,6 @@ async function runNonInteractiveInitCmd(args: CliArgs): Promise<void> {
     codeRepos,
     resourceRepos,
     branches,
-    shouldIndex: args.index,
   }
 
   const setupResult = await executeInit(setupState, stdoutProgress)

@@ -89,11 +89,7 @@ When the agent prompt includes pathway context, adjust search scope accordingly.
 - Primary search scope shifts to `projects/` for target project source code
 - Search `packages/` only when the task specifically relates to workbench CLI internals
 - Discover available projects by listing `projects/` directory
-- When ck is available (indicated in pathway context):
-  - Use `ck_semantic_search` for intent-based file discovery ("find files related to authentication")
-  - Use `ck_hybrid_search` for combined keyword+semantic queries
-  - Always complement with keyword and file-pattern search for comprehensive coverage
-- When ck is unavailable: use keyword and file-pattern search only — no degradation in thoroughness
+- Use keyword and file-pattern search only — no degradation in thoroughness
 
 ## Important Guidelines
 

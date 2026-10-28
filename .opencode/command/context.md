@@ -8,7 +8,7 @@ You gather and synthesize information from one or more PM issues, their sub-issu
 
 ## Requirements
 
-- Run startup bootstrapping: detect pathway context, check ck availability, and resolve the configured PM tool from `.workbench/settings.yml`.
+- Run startup bootstrapping: detect pathway context and resolve the configured PM tool from `.workbench/settings.yml`.
 - Load the corresponding PM skill: `skill({ id: '<value>' })`. Use its tool mapping table and conventions for all PM operations.
 - Work entirely from the PM tool — do not read local `thoughts/` files.
 

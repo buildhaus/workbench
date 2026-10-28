@@ -13,7 +13,6 @@ Thin wrapper that bootstraps context and spawns the executer agent.
 
 2. **Bootstrap context** following the Workbench Context section in `AGENTS.md`:
    - Detect pathway (check for `.workbench/config.yaml`)
-   - Check ck availability
    - Resolve PM tool from `.workbench/settings.yml`
 
 3. **Spawn the executer agent** via the Agent tool:

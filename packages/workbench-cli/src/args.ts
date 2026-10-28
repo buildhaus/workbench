@@ -8,7 +8,6 @@ export interface CliArgs {
   resourceRepositories: string[]
   codeBranch: string
   resourceBranch: string
-  index: boolean
   init: boolean
   source: string
   remote: boolean
@@ -27,7 +26,6 @@ export function parseCliArgs(): CliArgs {
       "resource-repository": { type: "string", multiple: true, default: [] },
       "code-branch": { type: "string", default: "main" },
       "resource-branch": { type: "string", default: "main" },
-      index: { type: "string", default: "on" },
       init: { type: "boolean", default: false },
       source: { type: "string", default: "buildhaus/workbench" },
       remote: { type: "boolean", default: false },
@@ -47,7 +45,6 @@ export function parseCliArgs(): CliArgs {
     resourceRepositories: values["resource-repository"] as string[],
     codeBranch: values["code-branch"] as string,
     resourceBranch: values["resource-branch"] as string,
-    index: values.index === "on",
     init: values.init,
     source: values.source as string,
     remote: values.remote as boolean,
@@ -79,7 +76,6 @@ OPTIONS:
   --resource-repository <url>     Resource repository URL (can be repeated)
   --code-branch <name>            Branch for all code repositories (default: main)
   --resource-branch <name>        Branch for all resource repositories (default: main)
-  --index <on|off>                Run indexing after init (default: on)
   --sync                          Sync workbench files from the source repository
   --tui                           Launch interactive TUI mode
   --help                          Display this help message
