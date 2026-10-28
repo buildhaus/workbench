@@ -29,7 +29,7 @@ You validate that an implementation plan was correctly executed, verify all succ
 
 ## Startup Bootstrapping
 
-Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
+Load the workbench-context skill for pathway detection and PM configuration:
 
 skill({ id: 'workbench-context' })
 

@@ -164,11 +164,6 @@ Supported PM tools are:
 
 Authentication and setup instructions vary by backend — refer to the relevant PM tool's documentation for authentication steps.
 
-## Code indexing with ck
-
-The setup wizard optionally indexes your repositories with [ck](https://beaconbay.github.io/ck/) — a hybrid code search tool by [BeaconBay](https://github.com/beaconbay) that fuses lexical (BM25/grep) precision with embedding-based recall, so you can find the right code even when the exact keywords aren't there.
-
-
 ## Syncing Your Workbench
 
 The workbench is periodically updated with improvements to slash commands, skills, schemas, and documentation. To fetch the latest managed files from the source repository, run `workbench --sync` from your workbench root:

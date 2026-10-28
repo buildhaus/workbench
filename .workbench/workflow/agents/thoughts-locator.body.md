@@ -86,7 +86,6 @@ Total: N relevant documents found
 When the agent prompt includes pathway context indicating Pathway 2 (configured project mode):
 - Also search `resources/` alongside `thoughts/` for relevant documents
 - Treat `resources/` documents with the same categorization as `thoughts/` documents
-- When ck is available, use `ck_semantic_search` to find documents by semantic relevance
 
 ## Important Guidelines
 

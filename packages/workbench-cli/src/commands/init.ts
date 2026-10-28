@@ -2,10 +2,8 @@ import { type CliRenderer, type KeyEvent } from "@opentui/core"
 import { showOrgSelect } from "../screens/orgSelect.ts"
 import { showRepoSelect, type Repo } from "../screens/repoSelect.ts"
 import { showBranchConfig } from "../screens/branchConfig.ts"
-import { showIndexPrompt } from "../screens/indexPrompt.ts"
 import { showExecutingScreen } from "../screens/executing.ts"
 import { runCommand } from "../utils/spawn.ts"
-import { createSpinner } from "../utils/spinner.ts"
 import { writeConfig } from "../utils/config.ts"
 import { mkdirSync } from "fs"
 
@@ -14,7 +12,6 @@ export interface InitState {
   codeRepos: Repo[]
   resourceRepos: Repo[]
   branches: Map<string, string>
-  shouldIndex: boolean
 }
 
 export interface InitProgress {
@@ -30,8 +27,7 @@ export interface InitResult {
 
 export async function executeInit(
   state: InitState,
-  progress: InitProgress,
-  renderer?: CliRenderer
+  progress: InitProgress
 ): Promise<InitResult> {
   const { onLine, startThrottle, stopThrottle } = progress
 
@@ -122,34 +118,6 @@ export async function executeInit(
     writeConfig(state.selectedOrg, state.codeRepos, state.resourceRepos, state.branches)
     onLine("Config written successfully.", false, false)
 
-    if (state.shouldIndex) {
-      onLine("--- Running ck --index ---", true, false)
-      if (renderer) {
-        const indexSpinner = createSpinner(renderer, "Indexing...")
-        indexSpinner.start()
-        startThrottle()
-        try {
-          await runCommand("ck", ["--index"], (line, _, isCR) => onLine(line, false, isCR))
-          onLine("Indexing complete.", false, false)
-        } catch (err) {
-          onLine(`Warning: ck --index failed: ${err}. Continuing...`, false, false)
-        } finally {
-          indexSpinner.stop()
-          stopThrottle()
-        }
-      } else {
-        startThrottle()
-        try {
-          await runCommand("ck", ["--index"], (line, _, isCR) => onLine(line, false, isCR))
-          onLine("Indexing complete.", false, false)
-        } catch (err) {
-          onLine(`Warning: ck --index failed: ${err}. Continuing...`, false, false)
-        } finally {
-          stopThrottle()
-        }
-      }
-    }
-
     return { success: true }
   } catch (error) {
     return { success: false, error: error as Error }
@@ -181,11 +149,7 @@ export function runInitFlow(
               state.branches = branches
 
               setTimeout(() => {
-                showIndexPrompt(renderer, (shouldIndex) => {
-                  state.shouldIndex = shouldIndex
-
-                  void runInit(renderer, state as InitState, onComplete)
-                })
+                void runInit(renderer, state as InitState, onComplete)
               }, 0)
             })
           }, 0)
@@ -209,7 +173,7 @@ async function runInit(
     stopThrottle,
   }
 
-  const result = await executeInit(state, progress, renderer)
+  const result = await executeInit(state, progress)
 
   if (result.success) {
     appendLine(" ", false)

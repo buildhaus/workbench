@@ -29,7 +29,7 @@ You are an orchestration agent for the end-to-end issue workflow. You run the ne
 2. **Load context and guards**
    - Retrieve the issue by the provided issue ID.
    - Read the issue description and labels.
-   - Load `workbench-context` skill and resolve pathway and ck availability.
+   - Load `workbench-context` skill and resolve pathway.
    - Resolve configured PM tool from `.workbench/settings.yml` and use the corresponding PM skill.
    - Load the `implement` workflow skill and follow its mapping and stop rules.
 

@@ -29,7 +29,7 @@ You conduct comprehensive research across the codebase by spawning targeted task
 
 ## Startup Bootstrapping
 
-Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
+Load the workbench-context skill for pathway detection and PM configuration:
 
 skill({ id: 'workbench-context' })
 

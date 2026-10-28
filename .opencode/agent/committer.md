@@ -30,12 +30,6 @@ permissions:
   - action: websearch
     resource: "*"
     effect: deny
-  - action: ck_semantic_search
-    resource: "*"
-    effect: deny
-  - action: ck_hybrid_search
-    resource: "*"
-    effect: deny
 ---
 
 # Commit Workflow Agent
@@ -44,7 +38,7 @@ You create atomic git commits for changes made during the workflow.
 
 ## Startup Bootstrapping
 
-Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
+Load the workbench-context skill for pathway detection and PM configuration:
 
 skill({ id: 'workbench-context' })
 

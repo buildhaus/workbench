@@ -26,7 +26,7 @@ You implement an approved technical plan from the issue's plan document. Plans c
 
 ## Startup Bootstrapping
 
-Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
+Load the workbench-context skill for pathway detection and PM configuration:
 
 skill({ id: 'workbench-context' })
 

@@ -10,9 +10,6 @@ orchestrator:
     escalate_on_blocking: true
     escalate_on_critical: true
     max_auto_answers_per_step: 50
-tools:
-  ck_semantic_search: false
-  ck_hybrid_search: false
 sync:
   paths:
   - .opencode

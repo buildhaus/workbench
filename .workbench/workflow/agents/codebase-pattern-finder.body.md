@@ -48,9 +48,6 @@ When the agent prompt includes pathway context, adjust pattern search scope acco
 
 **Pathway 2 (configured project):**
 - Search `projects/` for implementation patterns in target projects
-- When ck is available:
-  - Use `ck_semantic_search` as primary "find similar" tool
-  - Use `ck_hybrid_search` for combined keyword+semantic pattern matching
 - Search `packages/` only for workbench-internal patterns
 
 ## Output Format

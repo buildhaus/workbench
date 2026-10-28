@@ -263,7 +263,6 @@ Once the Q&A and scope exploration are complete:
 
 ### Environment Context
 - Pathway mode: [configured | workbench]
-- ck CLI available: [true | false]
 
 ## Success Criteria
 
