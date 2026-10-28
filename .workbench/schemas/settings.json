@@ -90,27 +90,6 @@
         }
       }
     },
-    "tools": {
-      "description": "Centralised toggles for shared tools that agents may use",
-      "type": "object",
-      "properties": {
-        "ck_semantic_search": {
-          "description": "When false, suppresses use of ck semantic search across all agents",
-          "type": "boolean",
-          "default": true
-        },
-        "ck_hybrid_search": {
-          "description": "When false, suppresses use of ck hybrid search across all agents",
-          "type": "boolean",
-          "default": true
-        }
-      },
-      "additionalProperties": false,
-      "default": {
-        "ck_semantic_search": true,
-        "ck_hybrid_search": true
-      }
-    },
     "sync": {
       "description": "Controls which files and directories are synced from the source workbench",
       "type": "object",

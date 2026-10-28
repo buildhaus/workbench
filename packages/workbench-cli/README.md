@@ -82,11 +82,7 @@ These flags work with both `--init` and standalone usage:
 | `--resource-repository <url>` | Resource repository URL (can be repeated) | — |
 | `--code-branch <name>` | Branch for all code repositories | `main` |
 | `--resource-branch <name>` | Branch for all resource repositories | `main` |
-| `--index <on\|off>` | Run [ck](https://beaconbay.github.io/ck/) indexing after init | `on` |
 | `--tui` | Launch interactive TUI mode | `false` |
-
-> **What is ck?** [ck](https://beaconbay.github.io/ck/) is a hybrid code search tool by [BeaconBay](https://github.com/beaconbay) that fuses lexical (BM25/grep) precision with embedding-based recall, so you can find the right code even when the exact keywords aren't there.
-
 
 ## Sync
 
@@ -133,7 +129,6 @@ Running init walks through:
 2. Select code repositories — added as submodules under `projects/`.
 3. Select resource repositories — added as submodules under `resources/`.
 4. Configure the target branch per repository.
-5. Optionally index with [ck](https://beaconbay.github.io/ck/).
 
 Afterwards, `.workbench/config.yaml` is written with the selected configuration.
 

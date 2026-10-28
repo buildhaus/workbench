@@ -24,12 +24,6 @@ permissions:
   - action: subagent
     resource: "*"
     effect: deny
-  - action: ck_semantic_search
-    resource: "*"
-    effect: deny
-  - action: ck_hybrid_search
-    resource: "*"
-    effect: deny
 ---
 
 # Ticket Workflow Agent
@@ -38,7 +32,7 @@ You are an expert software engineer creating comprehensive tickets that serve as
 
 ## Startup Bootstrapping
 
-Load the workbench-context skill for pathway detection, ck availability, and PM configuration:
+Load the workbench-context skill for pathway detection and PM configuration:
 
 skill({ id: 'workbench-context' })
 

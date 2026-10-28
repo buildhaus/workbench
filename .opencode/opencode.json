@@ -2,11 +2,6 @@
     "$schema": "https://opencode.ai/config.json",
     "mcp": {
         "servers": {
-            "ck": {
-                "type": "local",
-                "command": ["ck", "--serve"],
-                "codemode": false
-            },
             "linear": {
                 "type": "remote",
                 "url": "https://mcp.linear.app/mcp",
