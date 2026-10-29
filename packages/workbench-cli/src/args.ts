@@ -1,4 +1,5 @@
 import { parseArgs } from "node:util"
+import { DEFAULT_PM, PM_BACKENDS, isProjectManagement, type ProjectManagement } from "./utils/config.ts"
 
 export interface CliArgs {
   help: boolean
@@ -14,9 +15,10 @@ export interface CliArgs {
   name: string
   noTui: boolean
   sync: boolean
+  pm: ProjectManagement
 }
 
-export function parseCliArgs(): CliArgs {
+export function parseCliArgs(argv: string[] = process.argv.slice(2)): CliArgs {
   const { values } = parseArgs({
     options: {
       help: { type: "boolean", default: false },
@@ -32,10 +34,18 @@ export function parseCliArgs(): CliArgs {
       name: { type: "string", default: "workbench" },
       "no-tui": { type: "boolean", default: false },
       sync: { type: "boolean", default: false },
+      pm: { type: "string", default: DEFAULT_PM },
     },
+    args: argv,
     strict: true,
     allowPositionals: false,
   })
+
+  const pm = values.pm as string
+  if (!isProjectManagement(pm)) {
+    console.error(`Invalid --pm value "${pm}". Allowed values: ${PM_BACKENDS.join(", ")}`)
+    process.exit(1)
+  }
 
   return {
     help: values.help,
@@ -51,6 +61,7 @@ export function parseCliArgs(): CliArgs {
     name: values.name as string,
     noTui: values["no-tui"] as boolean,
     sync: values.sync as boolean,
+    pm,
   }
 }
 
@@ -76,6 +87,7 @@ OPTIONS:
   --resource-repository <url>     Resource repository URL (can be repeated)
   --code-branch <name>            Branch for all code repositories (default: main)
   --resource-branch <name>        Branch for all resource repositories (default: main)
+  --pm <github-issues|linear>     Project management backend (default: github-issues)
   --sync                          Sync workbench files from the source repository
   --tui                           Launch interactive TUI mode
   --help                          Display this help message
@@ -84,6 +96,7 @@ EXAMPLES:
   workbench --init
   workbench --init --no-tui --name my-project
   workbench --init --no-tui --name my-project --source myorg/custom-wb
+  workbench --init --no-tui --name my-project --pm linear
   workbench --init --no-tui --name my-project --remote --org myorg
   workbench --init --no-tui --name my-project --remote --org myorg --code-repository https://github.com/myorg/api
   workbench --org myorg --code-repository https://github.com/myorg/backend

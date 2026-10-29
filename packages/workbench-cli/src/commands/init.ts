@@ -2,9 +2,15 @@ import { type CliRenderer, type KeyEvent } from "@opentui/core"
 import { showOrgSelect } from "../screens/orgSelect.ts"
 import { showRepoSelect, type Repo } from "../screens/repoSelect.ts"
 import { showBranchConfig } from "../screens/branchConfig.ts"
+import { showPmSelect } from "../screens/pmSelect.ts"
 import { showExecutingScreen } from "../screens/executing.ts"
 import { runCommand } from "../utils/spawn.ts"
-import { writeConfig } from "../utils/config.ts"
+import {
+  DEFAULT_PM,
+  writeConfig,
+  writeSettings,
+  type ProjectManagement,
+} from "../utils/config.ts"
 import { mkdirSync } from "fs"
 
 export interface InitState {
@@ -12,6 +18,7 @@ export interface InitState {
   codeRepos: Repo[]
   resourceRepos: Repo[]
   branches: Map<string, string>
+  pm: ProjectManagement
 }
 
 export interface InitProgress {
@@ -118,6 +125,10 @@ export async function executeInit(
     writeConfig(state.selectedOrg, state.codeRepos, state.resourceRepos, state.branches)
     onLine("Config written successfully.", false, false)
 
+    onLine("--- Writing .workbench/settings.yml ---", true, false)
+    writeSettings(state.pm)
+    onLine("Settings written successfully.", false, false)
+
     return { success: true }
   } catch (error) {
     return { success: false, error: error as Error }
@@ -126,7 +137,8 @@ export async function executeInit(
 
 export function runInitFlow(
   renderer: CliRenderer,
-  onComplete: (initialized: boolean) => void
+  onComplete: (initialized: boolean) => void,
+  initialPm: ProjectManagement = DEFAULT_PM
 ): void {
   const state: Partial<InitState> = {}
 
@@ -149,7 +161,13 @@ export function runInitFlow(
               state.branches = branches
 
               setTimeout(() => {
-                void runInit(renderer, state as InitState, onComplete)
+                showPmSelect(renderer, initialPm, (pm) => {
+                  state.pm = pm
+
+                  setTimeout(() => {
+                    void runInit(renderer, state as InitState, onComplete)
+                  }, 0)
+                })
               }, 0)
             })
           }, 0)
