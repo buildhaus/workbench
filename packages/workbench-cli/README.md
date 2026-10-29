@@ -82,6 +82,7 @@ These flags work with both `--init` and standalone usage:
 | `--resource-repository <url>` | Resource repository URL (can be repeated) | — |
 | `--code-branch <name>` | Branch for all code repositories | `main` |
 | `--resource-branch <name>` | Branch for all resource repositories | `main` |
+| `--pm <github-issues\|linear>` | Project management backend written to `.workbench/settings.yml` | `github-issues` |
 | `--tui` | Launch interactive TUI mode | `false` |
 
 ## Sync
@@ -129,8 +130,9 @@ Running init walks through:
 2. Select code repositories — added as submodules under `projects/`.
 3. Select resource repositories — added as submodules under `resources/`.
 4. Configure the target branch per repository.
+5. Choose the project management backend (`github-issues` or `linear`).
 
-Afterwards, `.workbench/config.yaml` is written with the selected configuration.
+Afterwards, `.workbench/config.yaml` is written with the selected configuration and `.workbench/settings.yml` records the chosen project management backend.
 
 ## Error scenarios
 

@@ -8,7 +8,7 @@ import { showExecutingScreen } from "../screens/executing.ts"
 import { showSourceInput } from "../screens/initSourceInput.ts"
 import { showRemotePrompt } from "../screens/initRemotePrompt.ts"
 import { showRemoteNameInput } from "../screens/initRemoteNameInput.ts"
-import { writeSourceConfig } from "../utils/config.ts"
+import { writeSourceConfig, type ProjectManagement } from "../utils/config.ts"
 import type { InitProgress } from "./init.ts"
 import type { CliRenderer } from "@opentui/core"
 import type { CliArgs } from "../args.ts"
@@ -173,7 +173,7 @@ export function runInitialiseFlow(
                     setTimeout(() => {
                       showInitSetupPrompt(renderer, (shouldSetup) => {
                         if (shouldSetup) {
-                          void runTuiSetupAfterInit(renderer, onComplete)
+                          void runTuiSetupAfterInit(renderer, onComplete, args.pm)
                         } else {
                           console.log("\nTo set up your workbench later, run: workbench --tui")
                           renderer.destroy()
@@ -186,7 +186,7 @@ export function runInitialiseFlow(
                   setTimeout(() => {
                     showInitSetupPrompt(renderer, (shouldSetup) => {
                       if (shouldSetup) {
-                        void runTuiSetupAfterInit(renderer, onComplete)
+                        void runTuiSetupAfterInit(renderer, onComplete, args.pm)
                       } else {
                         console.log("\nTo set up your workbench later, run: workbench --tui")
                         renderer.destroy()
@@ -276,10 +276,15 @@ async function runTuiCreateRemote(
 
 async function runTuiSetupAfterInit(
   renderer: CliRenderer,
-  onComplete: () => void
+  onComplete: () => void,
+  pm: ProjectManagement
 ): Promise<void> {
   const { runInitFlow } = await import("./init.ts")
-  runInitFlow(renderer, (_success) => {
-    onComplete()
-  })
+  runInitFlow(
+    renderer,
+    (_success) => {
+      onComplete()
+    },
+    pm
+  )
 }

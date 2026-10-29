@@ -54,3 +54,35 @@ export function writeConfig(
   mkdirSync(".workbench", { recursive: true })
   writeFileSync(".workbench/config.yaml", dump(config))
 }
+
+export const PM_BACKENDS = ["github-issues", "linear"] as const
+
+export type ProjectManagement = (typeof PM_BACKENDS)[number]
+
+export const DEFAULT_PM: ProjectManagement = "github-issues"
+
+export function isProjectManagement(value: string): value is ProjectManagement {
+  return (PM_BACKENDS as readonly string[]).includes(value)
+}
+
+/** Merge a backend selection into an existing settings document, preserving every other key and its order. */
+export function serializeSettings(existingYaml: string | null, pm: ProjectManagement): string {
+  return dump({ ...parseSettings(existingYaml), project_management: pm })
+}
+
+export function writeSettings(pm: ProjectManagement): void {
+  const path = ".workbench/settings.yml"
+  const existing = existsSync(path) ? readFileSync(path, "utf-8") : null
+  writeFileSync(path, serializeSettings(existing, pm))
+}
+
+function parseSettings(existingYaml: string | null): Record<string, unknown> {
+  if (!existingYaml || existingYaml.trim() === "") {
+    return {}
+  }
+  const parsed = load(existingYaml)
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("Invalid .workbench/settings.yml: expected a YAML mapping")
+  }
+  return parsed as Record<string, unknown>
+}

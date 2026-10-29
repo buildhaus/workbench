@@ -28,7 +28,7 @@ if (args.sync) {
     void runTuiInitMode(args)
   }
 } else if (args.tui) {
-  void runTuiMode()
+  void runTuiMode(args)
 } else {
   void runNonInteractiveInit(args)
 }
@@ -46,7 +46,7 @@ async function runSync(args: CliArgs): Promise<void> {
   process.exit(0)
 }
 
-async function runTuiMode(): Promise<void> {
+async function runTuiMode(args: CliArgs): Promise<void> {
   checkAuth()
   checkRepoRoot()
 
@@ -113,7 +113,7 @@ async function runTuiMode(): Promise<void> {
 
   function launchMainMenu(initialized: boolean): void {
     showMainMenu(renderer, initialized, {
-      onInit: () => runInitFlow(renderer, launchMainMenu),
+      onInit: () => runInitFlow(renderer, launchMainMenu, args.pm),
       onExit: () => {
         renderer.destroy()
         process.exit(0)
@@ -163,6 +163,7 @@ async function runNonInteractiveInit(args: CliArgs): Promise<void> {
     codeRepos,
     resourceRepos,
     branches,
+    pm: args.pm,
   }
 
   const stdoutProgress: InitProgress = {
@@ -239,11 +240,6 @@ async function runNonInteractiveInitCmd(args: CliArgs): Promise<void> {
     process.exit(0)
   }
 
-  if (existsSync(".workbench/config.yaml")) {
-    console.error(".workbench/ already exists")
-    process.exit(1)
-  }
-
   const targetOrg = args.org ?? (await getCurrentUserLogin())
   const codeRepos: Repo[] = args.codeRepositories.map((url) =>
     buildRepoFromUrl(url, args.codeBranch)
@@ -260,6 +256,7 @@ async function runNonInteractiveInitCmd(args: CliArgs): Promise<void> {
     codeRepos,
     resourceRepos,
     branches,
+    pm: args.pm,
   }
 
   const setupResult = await executeInit(setupState, stdoutProgress)

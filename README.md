@@ -162,6 +162,8 @@ Supported PM tools are:
 - Linear (`linear`)
 - GitHub Issues (`github-issues`)
 
+The backend is chosen during workbench initialisation — interactively in the setup wizard, or non-interactively with `--pm <github-issues|linear>` — and persisted to `.workbench/settings.yml`. Editing the file by hand remains valid.
+
 Authentication and setup instructions vary by backend — refer to the relevant PM tool's documentation for authentication steps.
 
 ## Syncing Your Workbench
